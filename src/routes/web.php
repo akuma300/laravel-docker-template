@@ -12,9 +12,12 @@
 */
 
 // 追加
-Route::get('/todo', 'TodoController@index');
+Route::get('/todo', 'TodoController@index')->name('todo.index');
 Route::get('/todo/create', 'TodoController@create')->name('todo.create'); // 追記
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/todo', 'TodoController@store')->name('todo.store');
+
