@@ -20,7 +20,6 @@ class TodoController extends Controller
     {
         return view('todo.create');
     }
-
     public function store(Request $request) // 追記
     {
         $content = $request->input('content'); // 追記
