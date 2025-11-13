@@ -20,6 +20,7 @@ class TodoController extends Controller
     {
         return view('todo.create');
     }
+    
     public function store(Request $request) // 追記
     {
         $inputs = $request->all();
@@ -32,6 +33,13 @@ class TodoController extends Controller
         $todo->save();
 
         return redirect()->route('todo.index');
-        dd($todo);
+    }
+
+    public function show($id)
+    {
+        $model = new Todo();
+        $todo = $model->find($id);
+
+        return view('todo.show', ['todo' => $todo]);
     }
 }
