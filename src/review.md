@@ -3,7 +3,7 @@
 ## Todo一覧機能
 
 ### Todoモデルのallメソッドで実行しているSQLは何か
-SELECT文
+SELECT文　select * from 'todos'
 ### Todoモデルのallメソッドの返り値は何か
 Collectionクラス
 ### 配列の代わりにCollectionクラスを使用するメリットは
@@ -13,7 +13,10 @@ Collectionクラス
 第2引数：渡したいデータの連想配列
 Controllerからbladeファイルへ値を渡している。
 ### index.blade.phpの$todos・$todoに代入されているものは何か
-DBの todos テーブルの全レコード
+$todos　⇒　DBの todos テーブルの全レコード
+
+$todo　⇒　空のインスタンス
+どちらもオブジェクト型
 ## Todo作成機能
 
 ### Requestクラスのallメソッドは何をしているか
@@ -23,21 +26,26 @@ DBの todos テーブルの全レコード
 ### $fillableは何のために設定しているか
 代入できる項目に制限をかけており一括代入における脆弱性を補っている。
 ### saveメソッドで実行しているSQLは何か
-insert文
+insert文　"insert into todos (content, created_at, updated_at,'id')　VALUES（）
 ### redirect()->route()は何をしているか
 一覧画面にリダイレクトするための記述をしている。
+todo.index という名前のルート名が引数
 ## その他
 
 ### テーブル構成をマイグレーションファイルで管理するメリット
 マイグレーションファイルを開発者同士でgitなどで共有しておけばマイグレーションを実行するだけで、開発者同士のテーブル構成を統一させることができるため
+
+マイグレーションにてテーブルなどを作り
+シーダーにより初期データなどのレコードをいれる操作の違いになります。
 ### マイグレーションファイルのup()、down()は何のコマンドを実行した時に呼び出されるのか
 up（）→artisanコマンド
 down() →rollbackコマンド
 ### Seederクラスの役割は何か
 開発やテストでデータベースに初期データを自動で登録するための役割
 ### route関数の引数・返り値・使用するメリット
-引数：('/todo/create','TodoController@create')
-返値：http://localhost:8080/todo/create
+第1引数：'todo.index'　URIのルート
+第2引数：内先のルートに使って欲しいの場所
+返値：http://localhost:8080/todo
 使用するメリット：修正箇所が減るため、保守性の向上
 ### @extends・@section・@yieldの関係性とbladeを分割するメリット
 @extendsはbladeのファイルの継承をおこない@section（）~ @endsectionで囲われた部分を@yield()に挿入することにより複数のBladeを組み合わせ、1枚のHTMLを生成できるような関係になりコードの再利用による保守性の向上につながっている。
