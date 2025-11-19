@@ -27,3 +27,4 @@ Route::put('/todo/{id}', 'TodoController@update')->name('todo.update');
 
 Route::post('/todo', 'TodoController@store')->name('todo.store');
 
+Route::delete('/todo/{id}', 'TodoController@delete')->name('todo.delete');
